@@ -15,7 +15,7 @@ backend\
 `git clone https://github.com/charlotte-curran/fundraising_widget_fullstack.git`\
 `cd github-widget-backend`\
 `yarn`\
-`yarn start`\
+`yarn start`
 
 frontend\
 `cd github-widget-frontend`\
