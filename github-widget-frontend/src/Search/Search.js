@@ -27,7 +27,8 @@ export default props => {
     submitHandler,
     searchResults,
     pageHandler,
-    addToFaves
+    addToFaves,
+    removeFromFaves
   } = props;
 
   return (
@@ -70,7 +71,11 @@ export default props => {
                   </Repo>
                   <FaveToggle
                     key={`favetoggle${i}`}
-                    onClick={() => addToFaves(value.id)}
+                    onClick={() =>
+                      favorites.some(obj => obj.id === value.id)
+                        ? removeFromFaves(value.id)
+                        : addToFaves(value.id)
+                    }
                     isFave={favorites.some(obj => obj.id === value.id)}
                   />
                 </ResultLine>

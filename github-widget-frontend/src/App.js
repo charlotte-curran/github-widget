@@ -89,6 +89,7 @@ const App = () => {
             searchResults={searchResults}
             pageHandler={pageHandler}
             addToFaves={addToFaves}
+            removeFromFaves={removeFromFaves}
           />
         )}
       </Wrapper>
