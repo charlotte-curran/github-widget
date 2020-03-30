@@ -11,13 +11,14 @@ React, styled-components, axios, express, lowdb, node
 
 # to run
 
-backend
-`git clone https://github.com/charlotte-curran/fundraising_widget_fullstack.git`
-`cd github-widget-backend`
-`yarn`
-`yarn start`
+backend\
+`git clone https://github.com/charlotte-curran/fundraising_widget_fullstack.git`\
+`cd github-widget-backend`\
+`yarn`\
+`yarn start`\
+\
 
-frontend
-`cd github-widget-frontend`
-`yarn`
-`yarn start`
+frontend\
+`cd github-widget-frontend`\
+`yarn`\
+`yarn start`\
