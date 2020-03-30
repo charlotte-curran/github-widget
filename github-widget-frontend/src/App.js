@@ -57,30 +57,15 @@ const App = () => {
       setIsFavesUpdated(true);
     }
   };
-  useEffect(() => {
-    setZenQuote("This is a zen quote");
 
-    setFavorites([
-      {
-        id: 2325298,
-        owner: { name: "owner", url: "" },
-        repo: { name: "repo", url: "" }
-      },
-      {
-        id: 1,
-        owner: { name: "owner", url: "" },
-        repo: { name: "repo", url: "" }
-      }
-    ]);
-  }, []);
-  // useEffect(() => {
-  //   (async () => {
-  //     const [quote, faves] = await Promise.all([getQuote(), getFaves()]);
-  //     setZenQuote(quote.data);
-  //     setFavorites(faves.data);
-  //     setIsFavesUpdated(false);
-  //   })();
-  // }, [isFavesUpdated]);
+  useEffect(() => {
+    (async () => {
+      const [quote, faves] = await Promise.all([getQuote(), getFaves()]);
+      setZenQuote(quote.data);
+      setFavorites(faves.data);
+      setIsFavesUpdated(false);
+    })();
+  }, [isFavesUpdated]);
 
   return (
     <ThemeProvider theme={Theme}>
