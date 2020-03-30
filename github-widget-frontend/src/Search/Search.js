@@ -10,13 +10,8 @@ import {
   Repo,
   Fave as ResultLine
 } from "../Faves/Faves.styles";
-import {
-  SearchBar,
-  SearchForm,
-  SearchButton,
-  PageButton,
-  PageButtonWrapper
-} from "./Search.styles";
+import { SearchBar, SearchForm, SearchButton } from "./Search.styles";
+import PageButtons from "../PageButtons";
 
 export default props => {
   const {
@@ -50,6 +45,7 @@ export default props => {
           Search
         </Header>
       </HeaderWrapper>
+
       <SearchForm onSubmit={submitHandler}>
         <SearchBar
           name="search"
@@ -59,6 +55,7 @@ export default props => {
         />
         <SearchButton value="Submit" type="submit" />
       </SearchForm>
+
       <ListWrapper>
         {searchResults
           ? searchResults.data.map((value, i) => {
@@ -85,42 +82,7 @@ export default props => {
           : null}
       </ListWrapper>
 
-      {searchResults ? (
-        <PageButtonWrapper>
-          <PageButton
-            onClick={() => {
-              pageHandler(searchResults.links.first);
-            }}
-            isActive={searchResults.links.first !== "" ? true : false}
-          >
-            {"<<"}
-          </PageButton>
-          <PageButton
-            onClick={() => {
-              pageHandler(searchResults.links.prev);
-            }}
-            isActive={searchResults.links.prev !== "" ? true : false}
-          >
-            {"<"}
-          </PageButton>
-          <PageButton
-            onClick={() => {
-              pageHandler(searchResults.links.next);
-            }}
-            isActive={searchResults.links.next !== "" ? true : false}
-          >
-            {">"}
-          </PageButton>
-          <PageButton
-            onClick={() => {
-              pageHandler(searchResults.links.last);
-            }}
-            isActive={searchResults.links.last !== "" ? true : false}
-          >
-            {">>"}
-          </PageButton>
-        </PageButtonWrapper>
-      ) : null}
+      <PageButtons pageHandler={pageHandler} searchResults={searchResults} />
     </Wrapper>
   );
 };

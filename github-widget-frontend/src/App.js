@@ -10,7 +10,7 @@ import Search from "./Search";
 const App = () => {
   const [zenQuote, setZenQuote] = useState(null);
   const [favorites, setFavorites] = useState(null);
-  const [isFavesTab, setIsFavesTab] = useState(true);
+  const [isFavesTab, setIsFavesTab] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [isFavesUpdated, setIsFavesUpdated] = useState(false);
@@ -74,20 +74,12 @@ const App = () => {
     })();
   }, [isFavesUpdated]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const [quote, faves] = await Promise.all([getQuote(), getFaves()]);
-  //     setZenQuote(quote.data);
-  //     setFavorites(faves.data);
-  //     setIsFavesUpdated(false);
-  //   })();
-  // }, [isFavesUpdated]);
-
   return (
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       <Wrapper>
         <Header>{zenQuote}</Header>
+
         {isFavesTab ? (
           <Faves
             favorites={favorites}

@@ -11,5 +11,13 @@ React, styled-components, axios, express, lowdb, node
 
 # to run
 
-In terminal, navigate to `/github-widget-backend` directory, run `yarn` to install, and `yarn start` to start server.
-Repeat for frontend in `/github-widget-frontend` directory.
+backend
+`git clone https://github.com/charlotte-curran/fundraising_widget_fullstack.git`
+`cd github-widget-backend`
+`yarn`
+`yarn start`
+
+frontend
+`cd github-widget-frontend`
+`yarn`
+`yarn start`
