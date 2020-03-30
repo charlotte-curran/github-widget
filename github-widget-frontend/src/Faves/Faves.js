@@ -40,7 +40,7 @@ export default props => {
                   </Repo>
                   <FaveToggle
                     key={`favetoggle${i}`}
-                    onClick={() => removeFromFaves(value.id)}
+                    onClick={() => removeFromFaves(value.id.id)}
                     isFave={true}
                   />
                 </Fave>

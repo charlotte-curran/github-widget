@@ -32,8 +32,11 @@ const appRouter = app => {
   });
 
   app.post("/favorites", (req, res) => {
-    const faves = addToFaves(req.body.favorite);
-
+    if (req.body.favorite) {
+      const faves = addToFaves(req.body.favorite);
+    } else if (req.body.delete) {
+      const faves = removeFromFaves(req.body.delete);
+    }
     res.status(200).send(faves);
   });
 
@@ -43,11 +46,6 @@ const appRouter = app => {
       : await searchRepo(req.body.query);
 
     res.status(200).send(results);
-  });
-
-  app.post("/favorites", (req, res) => {
-    const faves = removeFromFaves(req.body.favorite);
-    res.status(200).send(faves);
   });
 };
 

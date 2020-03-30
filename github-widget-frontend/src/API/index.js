@@ -33,10 +33,11 @@ export const postFave = async id => {
 export const removeFave = async id => {
   const endpoint = "/favorites";
   try {
-    const res = await axios.post(endpoint, { favorite: id });
+    const res = await axios.post(endpoint, { delete: id });
     return res;
   } catch (error) {}
 };
+
 export const getSearch = async (query, pageEndpoint) => {
   const endpoint = "/search";
   const body = pageEndpoint

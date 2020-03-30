@@ -53,6 +53,7 @@ export default props => {
       <SearchForm onSubmit={submitHandler}>
         <SearchBar
           name="search"
+          type="text"
           placeholder="Search for a repo!"
           onChange={handleInputChange}
         />

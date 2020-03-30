@@ -23,7 +23,7 @@ const getRepo = async id => {
 const searchRepo = async (query, endpoint) => {
   endpoint =
     endpoint ||
-    `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc&per_page=10`;
+    `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc&per_page=20`;
   try {
     const res = await axios.get(endpoint);
     const headersLinks = res.headers.link.split(",");

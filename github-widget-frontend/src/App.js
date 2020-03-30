@@ -52,7 +52,6 @@ const App = () => {
 
   const removeFromFaves = async id => {
     const res = await removeFave(id);
-
     if ((res.status = 200)) {
       setIsFavesUpdated(true);
     }
@@ -60,12 +59,29 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      const [quote, faves] = await Promise.all([getQuote(), getFaves()]);
+      const quote = await getQuote();
       setZenQuote(quote.data);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const faves = await getFaves();
       setFavorites(faves.data);
-      setIsFavesUpdated(false);
+      if (isFavesUpdated) {
+        setIsFavesUpdated(false);
+      }
     })();
   }, [isFavesUpdated]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const [quote, faves] = await Promise.all([getQuote(), getFaves()]);
+  //     setZenQuote(quote.data);
+  //     setFavorites(faves.data);
+  //     setIsFavesUpdated(false);
+  //   })();
+  // }, [isFavesUpdated]);
 
   return (
     <ThemeProvider theme={Theme}>
