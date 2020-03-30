@@ -28,7 +28,7 @@ const appRouter = app => {
       }
     });
 
-    res.status(200).send(faveIDs);
+    res.status(200).send(favorites);
   });
 
   app.post("/favorites", (req, res) => {
