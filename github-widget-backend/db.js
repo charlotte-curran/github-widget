@@ -14,7 +14,20 @@ const getFaves = () => {
   return db.get("favorites").value();
 };
 
-const testFunc = () => {
-  return "hello func";
+const addToFaves = id => {
+  db.get("favorites")
+    .push(id)
+    .write();
+
+  return db.get("favorites").value();
 };
-module.exports = [getFaves, testFunc];
+
+const removeFromFaves = id => {
+  db.get("favorites")
+    .pull(id)
+    .write();
+
+  return db.get("favorites").value();
+};
+
+module.exports = [getFaves, addToFaves, removeFromFaves];

@@ -33,6 +33,7 @@ const searchRepo = async (query, endpoint) => {
       next: "",
       last: ""
     };
+
     headersLinks.forEach(link => {
       const trimmedLink = link.split(">")[0].split("<")[1];
       if (link.endsWith('rel="first"')) {
@@ -46,7 +47,17 @@ const searchRepo = async (query, endpoint) => {
       }
     });
 
-    return { data: res.data, links: links };
+    const searchResults = [];
+
+    res.data.items.forEach(item => {
+      searchResults.push({
+        id: item.id,
+        repo: { name: item.name, url: item.html_url },
+        owner: { name: item.owner.login, url: item.owner.html_url }
+      });
+    });
+
+    return { data: searchResults, links: links };
   } catch (error) {
     console.error(error);
   }

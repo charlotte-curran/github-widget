@@ -1,4 +1,4 @@
-const [getFaves, testFunc] = require("./db");
+const [getFaves, addToFaves, removeFromFaves] = require("./db");
 const [getZen, getRepo, searchRepo] = require("./github-api");
 
 const appRouter = app => {
@@ -24,6 +24,7 @@ const appRouter = app => {
       const fave = infos.find(i => i.id === id);
       if (fave) {
         favorites.push({
+          id: { id },
           owner: {
             name: fave.owner.login,
             url: fave.owner.html_url
@@ -33,23 +34,27 @@ const appRouter = app => {
       }
     });
 
-    res.status(200).send(favorites);
+    res.status(200).send(faveIDs);
   });
 
-  app.get("/search", async (req, res) => {
-    const results = await searchRepo(
-      "linux",
-      "https://api.github.com/search/repositories?q=linux&sort=stars&order=desc&per_page=10&page=2"
-    );
+  app.post("/favorites", (req, res) => {
+    const faves = addToFaves(req.body.favorite);
+
+    res.status(200).send(faves);
+  });
+
+  app.post("/search", async (req, res) => {
+    const results = req.body.endpoint
+      ? await searchRepo(req.body.query, req.body.endpoint)
+      : await searchRepo(req.body.query);
+
     res.status(200).send(results);
   });
 
-  //   app.post("/payments", (req, res) => {
-  //     db.get("payments")
-  //       .push(req.body.payment)
-  //       .write();
-  //     res.status(200);
-  //   });
+  app.delete("/favorites", (req, res) => {
+    const faves = removeFromFaves(req.body.favorite);
+    res.status(200).send(faves);
+  });
 };
 
 module.exports = appRouter;
