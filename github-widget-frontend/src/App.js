@@ -10,7 +10,7 @@ import Search from "./Search";
 const App = () => {
   const [zenQuote, setZenQuote] = useState(null);
   const [favorites, setFavorites] = useState(null);
-  const [isFavesTab, setIsFavesTab] = useState(false);
+  const [isFavesTab, setIsFavesTab] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [isFavesUpdated, setIsFavesUpdated] = useState(false);

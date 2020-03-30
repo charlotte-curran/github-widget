@@ -51,8 +51,7 @@ const searchRepo = async (query, endpoint) => {
 
     res.data.items.forEach(item => {
       searchResults.push({
-        // id: item.id,
-        ...item.id,
+        id: item.id,
         repo: { name: item.name, url: item.html_url },
         owner: { name: item.owner.login, url: item.owner.html_url }
       });

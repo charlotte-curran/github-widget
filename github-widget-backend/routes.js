@@ -18,7 +18,7 @@ const appRouter = app => {
       const fave = infos.find(i => i.id === id);
       if (fave) {
         favorites.push({
-          id: { id },
+          id,
           owner: {
             name: fave.owner.login,
             url: fave.owner.html_url
@@ -34,10 +34,11 @@ const appRouter = app => {
   app.post("/favorites", (req, res) => {
     if (req.body.favorite) {
       const faves = addToFaves(req.body.favorite);
+      res.status(200).send(faves);
     } else if (req.body.delete) {
       const faves = removeFromFaves(req.body.delete);
+      res.status(200).send(faves);
     }
-    res.status(200).send(faves);
   });
 
   app.post("/search", async (req, res) => {
