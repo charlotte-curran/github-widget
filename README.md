@@ -16,9 +16,8 @@ backend\
 `cd github-widget-backend`\
 `yarn`\
 `yarn start`\
-\
 
 frontend\
 `cd github-widget-frontend`\
 `yarn`\
-`yarn start`\
+`yarn start`
