@@ -72,11 +72,11 @@ export default props => {
                   <FaveToggle
                     key={`favetoggle${i}`}
                     onClick={() =>
-                      favorites.some(obj => obj.id === value.id)
+                      favorites.some(obj => obj.id.id === value.id)
                         ? removeFromFaves(value.id)
                         : addToFaves(value.id)
                     }
-                    isFave={favorites.some(obj => obj.id === value.id)}
+                    isFave={favorites.some(obj => obj.id.id === value.id)}
                   />
                 </ResultLine>
               );

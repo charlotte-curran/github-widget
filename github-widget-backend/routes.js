@@ -45,7 +45,7 @@ const appRouter = app => {
     res.status(200).send(results);
   });
 
-  app.delete("/favorites", (req, res) => {
+  app.post("/favorites", (req, res) => {
     const faves = removeFromFaves(req.body.favorite);
     res.status(200).send(faves);
   });
