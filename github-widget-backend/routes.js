@@ -2,12 +2,6 @@ const [getFaves, addToFaves, removeFromFaves] = require("./db");
 const [getZen, getRepo, searchRepo] = require("./github-api");
 
 const appRouter = app => {
-  app.get("/", (req, res) => {
-    const test = testFunc();
-    console.log(test);
-    res.status(200).send(test);
-  });
-
   app.get("/zen", async (req, res) => {
     const zen = await getZen();
     res.status(200).send(zen);

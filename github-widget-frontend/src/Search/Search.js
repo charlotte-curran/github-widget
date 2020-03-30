@@ -60,7 +60,6 @@ export default props => {
       <ListWrapper>
         {searchResults
           ? searchResults.data.map((value, i) => {
-              console.log(value);
               return (
                 <ResultLine key={`resultline${i}`}>
                   <User key={`user${i}`} href={value.owner.url} target="_blank">
@@ -72,6 +71,7 @@ export default props => {
                   <FaveToggle
                     key={`favetoggle${i}`}
                     onClick={() => addToFaves(value.id)}
+                    isFave={favorites.some(obj => obj.id === value.id)}
                   />
                 </ResultLine>
               );

@@ -57,13 +57,12 @@ const App = () => {
       setIsFavesUpdated(true);
     }
   };
-
   useEffect(() => {
     setZenQuote("This is a zen quote");
 
     setFavorites([
       {
-        id: 1,
+        id: 2325298,
         owner: { name: "owner", url: "" },
         repo: { name: "repo", url: "" }
       },
@@ -74,7 +73,6 @@ const App = () => {
       }
     ]);
   }, []);
-
   // useEffect(() => {
   //   (async () => {
   //     const [quote, faves] = await Promise.all([getQuote(), getFaves()]);
